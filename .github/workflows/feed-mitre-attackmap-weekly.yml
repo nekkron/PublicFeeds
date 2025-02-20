@@ -9,15 +9,17 @@ jobs:
   download-mitreattackmap:
     name: Weekly workflow to parse all Microsoft Sentinel and Microsoft Security Services Built-in Alerts to csv file
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: 🍽️ Checkout the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           path: master
           fetch-depth: 0
 
       - name: 🐍 Set up Python 3.8
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v5
         with:
           python-version: "3.8"
           architecture: "x64"
@@ -25,12 +27,20 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests pandas attackcti pyyaml requests_html
+          pip install requests pandas attackcti pyyaml requests_html lxml_html_clean
 
       - name: 🚀 Run automation script
         run: python master/.script/mitre-attackmap.py
 
+      - name: Check if there are changes to commit
+        id: check_diff
+        run: |
+          cd master
+          git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT
+          cd ..
+
       - name: Commit files
+        if: steps.check_diff.outputs.changed == 'true'
         run: |
           cd master
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -40,5 +50,7 @@ jobs:
 
       - name: Push changes
         uses: ad-m/github-push-action@master
+        if: steps.check_diff.outputs.changed == 'true'
         with:
           directory: "master"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
