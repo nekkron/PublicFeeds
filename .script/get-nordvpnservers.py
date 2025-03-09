@@ -36,7 +36,7 @@ def main():
 
     curr_path = Path.cwd()
     out_path = (
-        curr_path / "master" / "PublicFeeds" / "NordVPNDaily" / "nordvpn-servers.json"
+        curr_path / "main" / "PublicFeeds" / "VPN" / "Nord" / "nordvpn-servers-daily.json"
     )
     try:
         out_path.parents[0].mkdir(parents=True, exist_ok=False)
