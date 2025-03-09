@@ -1,4 +1,4 @@
-name: Daily Nord VPN Servers Feed
+name: NordVPN Servers Feed
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   download-nordvpnservers:
-    name: Download Nord VPN Servers via API
+    name: Download NordVPN Servers via API
     runs-on: ubuntu-latest
     steps:
       - name: 🍽️ Checkout the repo
@@ -44,7 +44,7 @@ jobs:
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add *
-          git commit -m "Adding new nord vpn server daily feed" -a
+          git commit -m "Adding new NordVPN server daily feed" -a
 
       - name: Push changes
         uses: ad-m/github-push-action@master
