@@ -42,7 +42,7 @@ def main():
 
     curr_path = Path.cwd()
     out_path = (
-        curr_path / "master" / "PublicFeeds" / "TorGuardVPNDaily" / "torguardvpn-servers.csv"
+        curr_path / "master" / "PublicFeeds" / "VPN" / "TorGuard" / "torguardvpn-servers-daily.csv"
     )
 
     try:
