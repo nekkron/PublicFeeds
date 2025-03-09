@@ -1,4 +1,4 @@
-name: Weekly workflow to download all Feeds related to MSFT Public IP Ranges
+name: Update MSFT Public IP Ranges
 
 on:
   workflow_dispatch:
