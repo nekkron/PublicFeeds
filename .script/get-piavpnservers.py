@@ -96,7 +96,7 @@ def main():
     curr_path = Path.cwd()
 
     out_path = (
-        curr_path / "master" / "PublicFeeds" / "PIAVPNDaily" / "pia-servers.csv"
+        curr_path / "main" / "PublicFeeds" / "VPN" / "PIA" / "pia-servers-daily.csv"
     )
     try:
         out_path.parents[0].mkdir(parents=True, exist_ok=False)
