@@ -64,14 +64,14 @@ def main():
         / "ServiceTags_Public.json"
     )
     msftpublic_ips = (
-        curr_path / "master" / "PublicFeeds" / "IPRanges" / "MSFT_PublicIPs.csv"
+        curr_path / "master" / "PublicFeeds" / "MSFTIPRanges" / "MSFT_PublicIPs.csv"
     )
     officeworldwide_ips = (
         curr_path
         / "master"
         / "PublicFeeds"
-        / "IPRanges"
-        / "Office_WorldWide-IPRanges.json"
+        / "MSFTIPRanges"
+        / "OfficeWorldWide-IPRanges.json"
     )
 
     logging.info(f"Writing json file to output directory : {servicetags_public}")
